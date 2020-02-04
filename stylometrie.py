@@ -199,7 +199,8 @@ for polozka in data_def:
     elif slovni_druh == 'g':
         propria += 1
         plnovyznamova += 1
-    else print("Chybná hodnota na pozici ", pozice, '!')
+    else:
+    	print("Chybná hodnota na pozici ", pozice, '!')
 
 vypocet_sldruhu_type()	#  výpočet zastoupení slovních druhů ve slovníku
 
@@ -227,11 +228,12 @@ for polozka in data_def:
         komplement += 1
     elif syntax == 'k':
         konexak += 1
-    elif syntax == 'm'
+    elif syntax == 'm':
         postmodifikator += 1
-    elif syntax == 'h'
+    elif syntax == 'h':
         modalni_prvek += 1
-    else print("Chybná hodnota na pozici", pozice, '!')
+    else:
+    	print("Chybná hodnota na pozici", pozice, '!')
 
 print ('Syntaktické funkce vyhodnoceny.')
 print ('Vyhodnocování diagnostických znaků.')
@@ -245,21 +247,21 @@ for polozka in data_def: # výpočet frekvence diagnostických slov
         viceslabicna += 1
     else:
         jednoslabicna += 1
-    if znak = '也':
+    if znak == '也':
         g_casticeYE += 1
     elif znak == '矣':
         g_casticeYI += 1
     elif znak == '而':
         g_spojkaER += 1
-    elif znak == '所' and druh = 'z':
+    elif znak == '所' and druh == 'z':
         g_zajmenoSUO += 1
-    elif znak == '者' and druh = 'z':
+    elif znak == '者' and druh == 'z':
         g_zajmenoZHE += 1
     elif znak == '曰':
         g_citatorYUE += 1
     elif druh == 'k' or 'e'or 'f' or 'b':
         splynutiny += 1
-    elif (znak == '無' or '毋' or '勿') and (druh == 'd' or 'f')
+    elif (znak == '無' or '毋' or '勿') and (druh == 'd' or 'f'):
         injunktiva += 1
 
 print('Diagnostické znaky vyhodnoceny.')
@@ -331,7 +333,7 @@ with open('vystupy_stylometrie2.txt') as vystup_soubor2: # zápis frekvenčních
     vystup_soubor2.write('Gramatická slova: ' + prcTO(gramaticka) + '\n')
     vystup_soubor2.write('Splynutiny: ' + prcTO(splynutiny) + '\n')
     vystup_soubor2.write('Injunktivní záporky: ' + prcTO(injunktiva) + '\n')
-   	vystup_soubor2.write('\nStatistika zastoupení slovních druhů ve slovníku (TYPE):\n')
+    vystup_soubor2.write('\nStatistika zastoupení slovních druhů ve slovníku (TYPE):\n')
     vystup_soubor2.write('Podstatná jména: ' + prcTY(frekvence_slovnich_druhu['n']) + '\n')	
     vystup_soubor2.write('Vlastní jména: ' + prcTY(frekvence_slovnich_druhu['g']) + '\n')
     vystup_soubor2.write('Slovesa: ' + prcTY(frekvence_slovnich_druhu['v']) + '\n')
