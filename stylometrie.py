@@ -6,10 +6,11 @@
 
 import io
 import sys
+from pprint import pprint
 
 # datové proměnné
 datavcelku = ''
-data_bezsyntaxe = ''
+data_bezsyntaxe = []
 data = []
 datarazena = []
 typy = ()
@@ -128,6 +129,7 @@ pocet_token = len(data_def) # délka souboru ve znacích
 pocet_type = len(typy) # rozsah slovníku
 
 print ('Data načtena.')
+pprint(data_bezsyntaxe)
 print ('Vyhodnocování slovních druhů.')
 
 # vyhodnocení slovních druhů TOKEN
