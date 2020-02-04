@@ -101,7 +101,7 @@ def prcTO(cislo): # vrací řetězec: procentuální zastoupení TOKEN
     return procento
 
 def prcTY(cislo): # vrací řetězec: procentuální zastoupení TYPE
-    procento = str(cislo/pocet_type*100 + ' %'
+    procento = str(cislo/pocet_type*100) + ' %'
     return procento
 
 ##############################################################################
@@ -121,7 +121,7 @@ for vyrez in data: # doplnění chybějících syntaktických značek na výplň
 for vyrez in data: # vytvoření dat bez syntaktických značek
     data_bezsyntaxe.append(vyrez[:-2])
 typy = set(data_bezsyntaxe) # lemmatizace, výsledný tvar: ('也[p', atd.)
-typy_delene = (v.split('[', 1) for v in typy] # rozkouskování lemmat, výsledný tvar (['也', p], ['也', p], ...)
+typy_delene = [v.split('[', 1) for v in typy] # rozkouskování lemmat, výsledný tvar (['也', p], ['也', p], ...)
 data_razena = [v.split('[', 1) for v in data] # rozkouskování na [[也, p+x], [也, p+x], ...]
 data_def = tuple(data_razena) # zamražení dat v N-ticích
 pocet_token = len(data_def) # délka souboru ve znacích
@@ -286,7 +286,7 @@ print('Zastoupení ZHE:', prcTO(g_zajmenoZHE), 'a SUO: ', prcTO(g_zajmenoSUO))
 print('Zastoupení YUE:', prcTO(g_citatorYUE))
 print('Index adverbiální modifikace - token:', prcTO(adverbia))
 
-print('Typové charakteristiky (celkový počet typů:', pocet_type + '):'))
+print('Typové charakteristiky (celkový počet typů:', pocet_type + '):')
 print('Víceslabičná lemmata:', prcTY(viceslabicna_lemmata))
 
 print('Ukládání výsledků do souborů.')
@@ -305,7 +305,7 @@ with open('vystupy_stylometrie1.txt') as vystup_soubor: # zápis do souboru
     vystup_soubor.write('Injunktivní záporky: ' + prcTO(injunktiva) + '\n')
     vystup_soubor.write('Zájmena: ' + prcTO(zajmena) + '\n')
     vystup_soubor.write('Poměr YE a YI: ' + str(g_casticeYE/g_casticeYI) + '\n')
-    vystup_soubor.write('Zastoupení ER: ', prcTO(g_spojkaER+ \’n’))
+    vystup_soubor.write('Zastoupení ER: ', prcTO(g_spojkaER+ '\n'))
     vystup_soubor.write('Zastoupení ZHE: ' + prcTO(g_zajmenoZHE) + 'a SUO: ' + prcTO(g_zajmenoSUO) + '\n')
     vystup_soubor.write('Zastoupení YUE: ' + prcTO(g_citatorYUE) + '\n')
     vystup_soubor.write('Index adverbiální modifikace - token: ' + prcTO(adverbia) + '\n')
